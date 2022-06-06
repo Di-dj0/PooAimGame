@@ -21,29 +21,29 @@ mainWindow::mainWindow(QWidget *parent)
 
 }
 
+double Game::score = 0;
+
 void mainWindow::miniGame1(){
 
-    double time = QInputDialog::getDouble(this,"Espera input", "Digite o tempo para o jogo começar");
-    int difficult = QInputDialog::getInt(this,"Escolha a dificuldade", "Digite um valor entre 1 e 3 para a dificuldade", 0, 1, 3);
-    int shape = QInputDialog::getInt(this,"Escolha a forma", "Digite um valor entre 1 e 3 para a forma", 0, 1, 3);
+    int qttButtons = QInputDialog::getInt(this,"Espera input", "Digite a quantidade de botoes para ser o limite");
 
-    game1Window = new game(/*shape,*/ difficult, time);
+    game1Window = new Game(qttButtons);
     game1Window->setGeometry(350,100,600,600);
+
+    connect(game1Window, SIGNAL(endGame()), this, SLOT(game1End()));
 
     this->hide();
 
     game1Window->setTitle("Minigame 1");
     game1Window->show();
 
-
-
 }
 
 void mainWindow::miniGame2(){
 
-    int qttButtons = QInputDialog::getInt(this,"Espera input", "Digite a quantidade de botoes para ser o limite");
-
     this->hide();
+
     game2Window->show();
+
 
 }

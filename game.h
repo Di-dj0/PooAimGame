@@ -2,32 +2,35 @@
 #define GAME_H
 
 #include <QWindow>
+#include <QTimer>
 #include <vector>
 #include "button.h"
 
-class game : public QWindow
+class Game : public QWindow
 {
     Q_OBJECT
-    int /*shape,*/ difficult;
-    double timer;
-    std::vector<button> buttons;
+    int qnt;
+    static double score;
+    std::vector<Button *> buttons;
+    std::vector<Button *>::iterator it;
+    QTimer *time = new QTimer();
 
 public:
-    explicit game(QWindow *parent = nullptr);
+    //explicit Game(QWindow *parent = nullptr);
 
-    game(/*int shape,*/ int difficult, double timer) : /*shape(shape),*/ difficult(difficult), timer(timer) {}
+    Game(int qnt);
 
-    void createButton(int qnt){
-        int rand1, rand2;
+    void createButton();
 
-        for(int i = 0; i < qnt; i++){
-            rand1 = std::rand() % 350 + 600;
-            rand2 = std::rand() % 100 + 600;
-            //buttons.push_back(button(rand1, rand2));
-        }
-    }
+    void showButton();
+
+public slots:
+
+    void nextButton();
 
 signals:
+
+    void gameEnd();
 
 };
 

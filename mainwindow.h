@@ -12,7 +12,7 @@ class mainWindow : public QMainWindow
 {
     Q_OBJECT
     QPushButton *game1_button, *game2_button;
-    game *game1Window, *game2Window;
+    Game *game1Window, *game2Window;
     QInputDialog *userInput;
 public:
     explicit mainWindow(QWidget *parent = nullptr);
@@ -20,6 +20,11 @@ public:
 public slots:
     void miniGame1();
     void miniGame2();
+
+    void game1End() {
+        game1Window->hide();
+
+    }
 
 signals:
 

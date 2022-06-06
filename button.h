@@ -3,20 +3,18 @@
 
 #include <QPushButton>
 
-class button : public QPushButton
+class Button : public QPushButton
 {
 
     Q_OBJECT
 
 public:
-    explicit button(QPushButton *parent = nullptr);
 
-    button(int posx, int posy){
+    Button(int posx, int posy){
         setGeometry(posx, posy, 20, 20);
-    };
+    }
 
-    //erro q o stackoverflow arrumou
-    virtual ~button() {};
+    virtual ~Button() {}
 
 };
 
