@@ -36,6 +36,7 @@ void Game::createButton(){
     for(int i = 0; i < qnt; i++){
         QPushButton *b = new QPushButton(this);
         b->setGeometry(rand1, rand2, tam, tam);
+        b->setPalette(Qt::darkGreen);
         rand1 = rand()%(480-10 + 1) + 10;
         rand2 = rand()%(480-10 + 1) + 10;
         buttons.push_back(b);
@@ -68,3 +69,4 @@ void Game::nextButton(){
         showButton();
     }
 }
+

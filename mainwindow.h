@@ -16,11 +16,13 @@ class mainWindow : public QMainWindow
     QPushButton *game1_button, *game2_button;
     Game *gameWindow, *game2Window;
     QInputDialog *userInput;    
-    QLabel  *scoreWindow;
+    QLabel  *scoreWindow, *dificuldade3,*dificuldade2,*dificuldade1;
     int aux = 0;
 
 public:
     explicit mainWindow(QWidget *parent = nullptr);
+
+    void paintEvent(QPaintEvent *event);
 
     int auxCheck();
 

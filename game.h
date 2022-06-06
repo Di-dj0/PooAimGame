@@ -4,8 +4,12 @@
 #include <QWidget>
 #include <QTimer>
 #include <QMainWindow>
+#include <QPainter>
+#include <QBrush>
 #include <vector>
 #include "button.h"
+
+
 
 class Game : public QWidget
 {

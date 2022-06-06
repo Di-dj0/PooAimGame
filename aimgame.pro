@@ -1,5 +1,5 @@
 TEMPLATE = app
-TARGET = Auvaru
+TARGET = Teste
 QT = core gui widgets
 
 SOURCES += \

@@ -5,7 +5,7 @@ mainWindow::mainWindow(QWidget *parent)
     : QMainWindow{parent}
 {
 
-    this->setGeometry(350,100,300,300);
+    this->setGeometry(650,200,600,400);
 
     game1_button = new QPushButton("Minigame 1", this);
     game1_button->setGeometry(50,150,200,50);
@@ -14,11 +14,26 @@ mainWindow::mainWindow(QWidget *parent)
     game2_button->setGeometry(50,200,200,50);
 
     scoreWindow = new QLabel(this);
+    dificuldade3 = new QLabel(this);
+    dificuldade2 = new QLabel(this);
+    dificuldade1 = new QLabel(this);
 
     QString aux = "Score: ";
     aux.append(QString::number(Game::score, 'g', 2));
     scoreWindow->setText(aux);
     scoreWindow->setGeometry(50,100,200,50);
+
+    aux = "Dificuldade 3: ";
+    dificuldade3->setText(aux);
+    dificuldade3->setGeometry(325, 45, 200, 50);
+
+    aux = "Dificuldade 2: ";
+    dificuldade2->setText(aux);
+    dificuldade2->setGeometry(325, 130, 200, 50);
+
+    aux = "Dificuldade 1: ";
+    dificuldade1->setText(aux);
+    dificuldade1->setGeometry(325, 240, 200, 50);
 
     connect(game1_button, SIGNAL(clicked(bool)), SLOT(miniGame1()));
 
@@ -80,3 +95,15 @@ void mainWindow::gameEnd(){
     scoreWindow->setText(aux);
 
 }
+
+void mainWindow::paintEvent(QPaintEvent *event) {
+     QPainter painter(this);
+     QBrush brusher(Qt::darkGreen);
+     painter.setBrush(brusher);
+     painter.drawRect(475,50,50,50);
+     painter.drawRect(462.5,125,75,75);
+     painter.drawRect(450,225,100,100);
+}
+
+
+
