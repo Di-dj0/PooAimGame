@@ -4,21 +4,22 @@
 #include <QMainWindow>
 #include <QPushButton>
 #include <QInputDialog>
-#include <QWindow>
+#include "game.h"
+#include "button.h"
 #include <QTimer>
 
 class mainWindow : public QMainWindow
 {
     Q_OBJECT
-    QPushButton *minigame1, *minigame2;
+    QPushButton *game1_button, *game2_button;
+    game *game1Window, *game2Window;
     QInputDialog *userInput;
-    QWindow *game1;
 public:
     explicit mainWindow(QWidget *parent = nullptr);
 
 public slots:
-    void pequenoJogo1();
-    void pequenoJogo2();
+    void miniGame1();
+    void miniGame2();
 
 signals:
 

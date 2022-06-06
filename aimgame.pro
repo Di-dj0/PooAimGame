@@ -1,10 +1,14 @@
 TEMPLATE = app
-TARGET = marcelo
+TARGET = Auvaru
 QT = core gui widgets
 
 SOURCES += \
+    button.cpp \
+    game.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
+    button.h \
+    game.h \
     mainwindow.h
