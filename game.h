@@ -6,7 +6,7 @@
 #include <QMainWindow>
 #include <QPainter>
 #include <QBrush>
-//#include <QErrorMessage>
+#include <QErrorMessage>
 #include <vector>
 #include "button.h"
 
