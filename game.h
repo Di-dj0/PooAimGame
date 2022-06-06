@@ -10,19 +10,25 @@ class Game : public QWindow
 {
     Q_OBJECT
     int qnt;
-    static double score;
+    double timeLimit;
+
     std::vector<Button *> buttons;
     std::vector<Button *>::iterator it;
     QTimer *time = new QTimer();
 
 public:
     //explicit Game(QWindow *parent = nullptr);
+    static double score;
 
     Game(int qnt);
+
+    Game(double timeLimit);
 
     void createButton();
 
     void showButton();
+
+    void setWindowGeometry(int x, int y, int w, int h);
 
 public slots:
 

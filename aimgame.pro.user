@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 7.0.0, 2022-05-27T22:29:15. -->
+<!-- Written by QtCreator 7.0.0, 2022-05-30T16:13:08. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -240,8 +240,9 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/Users/Didjo/Documents/Backup de Infos/UTFPR/Semestre 5/POO/Qt Projects/Aim Game/23-05/aimgame 23-05/aimgame.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Didjo/Documents/Backup de Infos/UTFPR/Semestre 5/POO/Qt Projects/Aim Game/23-05/aimgame 23-05/aimgame.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">aimgame2</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/Users/Didjo/Documents/Backup de Infos/UTFPR/Semestre 5/POO/Qt Projects/Aim Game/27-05/aimgame.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Didjo/Documents/Backup de Infos/UTFPR/Semestre 5/POO/Qt Projects/Aim Game/27-05/aimgame.pro</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>

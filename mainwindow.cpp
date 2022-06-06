@@ -9,41 +9,68 @@ mainWindow::mainWindow(QWidget *parent)
 
     game1_button = new QPushButton("Minigame 1", this);
     game1_button->setGeometry(50,150,200,50);
-    game1_button->style();
 
     game2_button = new QPushButton("Minigame 2", this);
     game2_button->setGeometry(50,200,200,50);
+
+    scoreWindow = new QMessageBox();
+    scoreWindow->setWindowTitle("Pontuação");
 
     connect(game1_button, SIGNAL(clicked(bool)), SLOT(miniGame1()));
 
     connect(game2_button, SIGNAL(clicked(bool)), SLOT(miniGame2()));
 
-
 }
 
-double Game::score = 0;
+void mainWindow::setCheck(){
+    aux = 0;
+}
+
+int mainWindow::auxCheck(){
+    return aux;
+}
 
 void mainWindow::miniGame1(){
 
     int qttButtons = QInputDialog::getInt(this,"Espera input", "Digite a quantidade de botoes para ser o limite");
 
-    game1Window = new Game(qttButtons);
-    game1Window->setGeometry(350,100,600,600);
+    gameWindow = new Game(qttButtons);
+    gameWindow->setGeometry(350,100,600,600);
 
-    connect(game1Window, SIGNAL(endGame()), this, SLOT(game1End()));
+    connect(gameWindow, SIGNAL(gameEnd()), this, SLOT(gameEnd()));
 
     this->hide();
 
-    game1Window->setTitle("Minigame 1");
-    game1Window->show();
+    gameWindow->setTitle("Minigame 1");
+    gameWindow->show();
+
+    gameWindow->createButton();
+    gameWindow->showButton();
 
 }
 
 void mainWindow::miniGame2(){
 
+    double timeLimit = QInputDialog::getInt(this,"Espera input", "Digite a quantidade de segundos para ser o limite");
+
+    gameWindow = new Game(timeLimit);
+    gameWindow->setGeometry(350,100,600,600);
+
+    connect(gameWindow, SIGNAL(gameEnd()), this, SLOT(gameEnd()));
+
     this->hide();
 
-    game2Window->show();
+    gameWindow->setTitle("Minigame 2");
+    gameWindow->show();
 
+}
+
+void mainWindow::gameEnd(){
+    gameWindow->hide();
+    delete gameWindow;
+    std::string aux = "Score: ";
+    aux += std::to_string(Game::score);
+    scoreWindow->setInformativeText(QString(aux));
+    this->show();
 
 }

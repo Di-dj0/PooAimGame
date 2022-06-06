@@ -2,6 +2,7 @@
 #define BUTTON_H
 
 #include <QPushButton>
+#include <QPainter>
 
 class Button : public QPushButton
 {
@@ -10,11 +11,9 @@ class Button : public QPushButton
 
 public:
 
-    Button(int posx, int posy){
-        setGeometry(posx, posy, 20, 20);
-    }
+    Button(int posx, int posy);
 
-    virtual ~Button() {}
+    void showButton();
 
 };
 
