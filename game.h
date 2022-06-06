@@ -3,6 +3,8 @@
 
 #include <QWindow>
 #include <QTimer>
+#include <QPainter>
+#include <QBrush>
 #include <vector>
 #include "button.h"
 
@@ -29,6 +31,7 @@ public:
     void showButton();
 
     void setWindowGeometry(int x, int y, int w, int h);
+
 
 public slots:
 

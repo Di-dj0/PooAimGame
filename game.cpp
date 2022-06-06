@@ -6,6 +6,7 @@ Game::Game(int qnt){
 }
 
 Game::Game(double timeLimit){
+    this->show();
     this->timeLimit = timeLimit;
 }
 
@@ -18,6 +19,8 @@ void Game::createButton(){
 
     for(int i = 0; i < qnt; i++){
         Button *b = new Button(rand1, rand2);
+        b->paintEvent(this);
+
         rand1 = rand()%(600-350 + 1) + 350;
         rand2 = rand()%(600-100 + 1) + 100;
         buttons.push_back(b);
@@ -46,3 +49,5 @@ void Game::nextButton(){
         showButton();
     }
 }
+
+

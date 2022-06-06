@@ -70,7 +70,7 @@ void mainWindow::gameEnd(){
     delete gameWindow;
     std::string aux = "Score: ";
     aux += std::to_string(Game::score);
-    scoreWindow->setInformativeText(QString(aux));
+    //scoreWindow->setInformativeText(QString(aux));
     this->show();
 
 }
