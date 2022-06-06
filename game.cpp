@@ -1,28 +1,43 @@
 #include "mainwindow.h"
 #include "game.h"
 
-Game::Game(int qnt){
+Game::Game(int qnt, int difficult){
     this->qnt = qnt;
+    this->difficult = difficult;
 }
 
 Game::Game(double timeLimit){
-    this->show();
     this->timeLimit = timeLimit;
 }
 
 double Game::score = 0;
 
 void Game::createButton(){
+
+    //settings de dificuldade baseado no tamanho do quadrado
+    //easy = 100, medium = 75, hard = 50.
+
+    switch(difficult){
+        case 3:
+            tam = 50;
+        break;
+        case 2:
+            tam = 75;
+        break;
+        default:
+            tam = 100;
+        break;
+    }
+
     int rand1, rand2;
-    rand1 = rand()%(600-350 + 1) + 350;
-    rand2 = rand()%(600-100 + 1) + 100;
+    rand1 = rand()%(480-10 + 1) + 10;
+    rand2 = rand()%(480-10 + 1) + 10;
 
     for(int i = 0; i < qnt; i++){
-        Button *b = new Button(rand1, rand2);
-        b->paintEvent(this);
-
-        rand1 = rand()%(600-350 + 1) + 350;
-        rand2 = rand()%(600-100 + 1) + 100;
+        QPushButton *b = new QPushButton(this);
+        b->setGeometry(rand1, rand2, tam, tam);
+        rand1 = rand()%(480-10 + 1) + 10;
+        rand2 = rand()%(480-10 + 1) + 10;
         buttons.push_back(b);
     }
 
@@ -31,7 +46,11 @@ void Game::createButton(){
 }
 
 void Game::showButton(){
-    time->start();
+    if(time->isActive() != true){
+        time->setInterval(500000);
+        time->start();
+    }
+
     (*it)->show();
     connect((*it), SIGNAL(clicked(bool)), this, SLOT(nextButton()));
 }
@@ -42,12 +61,10 @@ void Game::nextButton(){
 
     if(it == buttons.end()){
         time->stop();
-        score = double(time->interval()/1000);
+        score = double((500000 - time->remainingTime())/1000);
         emit gameEnd();
     }
     else{
         showButton();
     }
 }
-
-

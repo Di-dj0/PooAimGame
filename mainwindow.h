@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <QPushButton>
 #include <QInputDialog>
-#include <QMessageBox>
+#include <QLabel>
 #include <string>
 #include "game.h"
 #include "button.h"
@@ -16,7 +16,7 @@ class mainWindow : public QMainWindow
     QPushButton *game1_button, *game2_button;
     Game *gameWindow, *game2Window;
     QInputDialog *userInput;    
-    QMessageBox  *scoreWindow;
+    QLabel  *scoreWindow;
     int aux = 0;
 
 public:

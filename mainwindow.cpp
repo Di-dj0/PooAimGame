@@ -13,8 +13,12 @@ mainWindow::mainWindow(QWidget *parent)
     game2_button = new QPushButton("Minigame 2", this);
     game2_button->setGeometry(50,200,200,50);
 
-    scoreWindow = new QMessageBox();
-    scoreWindow->setWindowTitle("Pontuação");
+    scoreWindow = new QLabel(this);
+
+    QString aux = "Score: ";
+    aux.append(QString::number(Game::score, 'g', 2));
+    scoreWindow->setText(aux);
+    scoreWindow->setGeometry(50,100,200,50);
 
     connect(game1_button, SIGNAL(clicked(bool)), SLOT(miniGame1()));
 
@@ -32,19 +36,21 @@ int mainWindow::auxCheck(){
 
 void mainWindow::miniGame1(){
 
-    int qttButtons = QInputDialog::getInt(this,"Espera input", "Digite a quantidade de botoes para ser o limite");
+    int qttButtons = QInputDialog::getInt(this,"Espera input", "Digite a quantidade de botoes para ser o limite", 0, 1);
+    int difficult = QInputDialog::getInt(this,"Espera input", "Digite a dificuldade", 0, 1, 3);
 
-    gameWindow = new Game(qttButtons);
+    gameWindow = new Game(qttButtons, difficult);
     gameWindow->setGeometry(350,100,600,600);
 
     connect(gameWindow, SIGNAL(gameEnd()), this, SLOT(gameEnd()));
 
     this->hide();
 
-    gameWindow->setTitle("Minigame 1");
+    gameWindow->setWindowTitle(QString::fromStdString("Minigame 1"));
     gameWindow->show();
 
     gameWindow->createButton();
+
     gameWindow->showButton();
 
 }
@@ -60,7 +66,7 @@ void mainWindow::miniGame2(){
 
     this->hide();
 
-    gameWindow->setTitle("Minigame 2");
+    gameWindow->setWindowTitle(QString::fromStdString("Minigame 2"));
     gameWindow->show();
 
 }
@@ -68,9 +74,9 @@ void mainWindow::miniGame2(){
 void mainWindow::gameEnd(){
     gameWindow->hide();
     delete gameWindow;
-    std::string aux = "Score: ";
-    aux += std::to_string(Game::score);
-    //scoreWindow->setInformativeText(QString(aux));
     this->show();
+    QString aux = "Score: ";
+    aux.append(QString::number(Game::score, 'g', 2));
+    scoreWindow->setText(aux);
 
 }

@@ -1,28 +1,27 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include <QWindow>
+#include <QWidget>
 #include <QTimer>
-#include <QPainter>
-#include <QBrush>
+#include <QMainWindow>
 #include <vector>
 #include "button.h"
 
-class Game : public QWindow
+class Game : public QWidget
 {
     Q_OBJECT
-    int qnt;
+    int qnt, tam, difficult;
     double timeLimit;
 
-    std::vector<Button *> buttons;
-    std::vector<Button *>::iterator it;
+    std::vector<QPushButton *> buttons;
+    std::vector<QPushButton *>::iterator it;
     QTimer *time = new QTimer();
 
 public:
     //explicit Game(QWindow *parent = nullptr);
     static double score;
 
-    Game(int qnt);
+    Game(int qnt, int difficult);
 
     Game(double timeLimit);
 
@@ -31,7 +30,6 @@ public:
     void showButton();
 
     void setWindowGeometry(int x, int y, int w, int h);
-
 
 public slots:
 
