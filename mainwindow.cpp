@@ -6,6 +6,7 @@ mainWindow::mainWindow(QWidget *parent)
 {
 
     this->setGeometry(650,200,600,400);
+    this->setStyleSheet("background-color : gray");
 
     game1_button = new QPushButton("Minigame 1", this);
     game1_button->setGeometry(50,150,200,50);
@@ -19,21 +20,21 @@ mainWindow::mainWindow(QWidget *parent)
     dificuldade1 = new QLabel(this);
 
     QString aux = "Score: ";
-    aux.append(QString::number(Game::score, 'g', 2));
+    aux.append(QString::number(Game::score, 'g', 4));
     scoreWindow->setText(aux);
     scoreWindow->setGeometry(50,100,200,50);
 
     aux = "Dificuldade 3: ";
     dificuldade3->setText(aux);
-    dificuldade3->setGeometry(325, 45, 200, 50);
+    dificuldade3->setGeometry(325, 45, 100, 50);
 
     aux = "Dificuldade 2: ";
     dificuldade2->setText(aux);
-    dificuldade2->setGeometry(325, 130, 200, 50);
+    dificuldade2->setGeometry(325, 130, 100, 50);
 
     aux = "Dificuldade 1: ";
     dificuldade1->setText(aux);
-    dificuldade1->setGeometry(325, 240, 200, 50);
+    dificuldade1->setGeometry(325, 240, 100, 50);
 
     connect(game1_button, SIGNAL(clicked(bool)), SLOT(miniGame1()));
 
@@ -56,13 +57,16 @@ void mainWindow::miniGame1(){
 
     gameWindow = new Game(qttButtons, difficult);
     gameWindow->setGeometry(350,100,600,600);
+    gameWindow->setStyleSheet("background-color: black");
 
     connect(gameWindow, SIGNAL(gameEnd()), this, SLOT(gameEnd()));
 
     this->hide();
 
+
     gameWindow->setWindowTitle(QString::fromStdString("Minigame 1"));
     gameWindow->show();
+
 
     gameWindow->createButton();
 

@@ -6,6 +6,7 @@
 #include <QMainWindow>
 #include <QPainter>
 #include <QBrush>
+//#include <QErrorMessage>
 #include <vector>
 #include "button.h"
 
@@ -17,9 +18,10 @@ class Game : public QWidget
     int qnt, tam, difficult;
     double timeLimit;
 
+
     std::vector<QPushButton *> buttons;
     std::vector<QPushButton *>::iterator it;
-    QTimer *time = new QTimer();
+    QTimer *time;
 
 public:
     //explicit Game(QWindow *parent = nullptr);

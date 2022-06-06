@@ -1,5 +1,5 @@
 TEMPLATE = app
-TARGET = Teste
+TARGET = QTriste
 QT = core gui widgets
 
 SOURCES += \
