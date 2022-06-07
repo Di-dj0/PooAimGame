@@ -4,19 +4,15 @@
 #include <QWidget>
 #include <QTimer>
 #include <QMainWindow>
-#include <QPainter>
-#include <QBrush>
+#include <QColor>
 #include <QErrorMessage>
 #include <vector>
-#include "button.h"
-
 
 
 class Game : public QWidget
 {
     Q_OBJECT
-    int qnt, tam, difficult;
-    double timeLimit;
+    int qnt, tam, difficult, cor;
 
 
     std::vector<QPushButton *> buttons;
@@ -27,9 +23,7 @@ public:
     //explicit Game(QWindow *parent = nullptr);
     static double score;
 
-    Game(int qnt, int difficult);
-
-    Game(double timeLimit);
+    Game(int qnt, int difficult,int cor);
 
     void createButton();
 
