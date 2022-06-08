@@ -10,6 +10,17 @@ mainWindow::mainWindow(QWidget *parent)
 
     play_button = new QPushButton("Jogar", this);               //Cria o botao de play
     play_button->setGeometry(50,175,200,50);
+    play_button->setStyleSheet("background-color: white");
+
+    scoreFile = new QFile("Score.txt");
+    scoreFile->open(QIODevice::ReadWrite);
+
+    QTextStream in(scoreFile);
+
+    while(!in.atEnd()){                                         //Le o arquivo de Score.txt
+        QString line = in.readLine();
+        Game::score = line.toDouble();
+    }
 
     scoreWindow = new QLabel(this);                             //Cria os labels para aparecer no menu
     dificuldade3 = new QLabel(this);
@@ -35,7 +46,6 @@ mainWindow::mainWindow(QWidget *parent)
     dificuldade1->setGeometry(325, 240, 100, 50);
 
     aux_str = "Cor escolhida: ";
-    aux_str.append(QString::number(cor, 10));
     corEscolhida->setText(aux_str);
     corEscolhida->setGeometry(50, 50, 100, 50);
 
@@ -49,7 +59,7 @@ void mainWindow::miniGame(){
     int qttButtons = QInputDialog::getInt(this,"Espera input", "Digite a quantidade de botoes para ser o limite", 0, 1);//Atribui a qntd maxima de botoes a qttButtons
     int difficult = QInputDialog::getInt(this,"Espera input", "Digite a dificuldade", 0, 1, 3);//Atribui a dificuldade a difficult
 
-    gameWindow = new Game(qttButtons, difficult, cor);
+    gameWindow = new Game(qttButtons, difficult, cor);                                         //Polimorfismo dinamico usando um ponteiro para BaseGame no Game
     gameWindow->setGeometry(350,100,600,600);                                                  //Seta o tamanho da janela
     gameWindow->setStyleSheet("background-color: black");                                      //Escolhe a cor de fundo
 
@@ -71,6 +81,18 @@ void mainWindow::gameEnd(){                                                     
     QString aux = "Score: ";
     aux.append(QString::number(Game::score, 'g', 4));
     scoreWindow->setText(aux);                                                                 //Coloca o score na tela
+
+    if(scoreFile->isOpen()){
+        scoreFile->seek(0);
+        QTextStream out(scoreFile);
+        out << Game::score;
+    }
+    else{
+        scoreFile->open(QIODevice::ReadWrite);
+        scoreFile->seek(0);
+        QTextStream out(scoreFile);
+        out << Game::score;
+    }
 }
 
 void mainWindow::paintEvent(QPaintEvent *event) {                                              //Desenha na tela os quadrados que representam as dificuldades
@@ -84,7 +106,7 @@ void mainWindow::paintEvent(QPaintEvent *event) {                               
 
      brusher.setColor(Qt::blue);
      painter.setBrush(brusher);
-     painter.drawRect(462.5,125,75,75);
+     painter.drawRect(462,125,75,75);
 
      brusher.setColor(Qt::yellow);
      painter.setBrush(brusher);
@@ -118,7 +140,3 @@ void mainWindow::mousePressEvent(QMouseEvent *event) {
     }
 
 }
-
-
-
-

@@ -8,5 +8,6 @@ SOURCES += \
     mainwindow.cpp
 
 HEADERS += \
+    basegame.h \
     game.h \
     mainwindow.h

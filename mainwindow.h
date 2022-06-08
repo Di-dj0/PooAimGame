@@ -8,8 +8,8 @@
 #include <QLabel>
 #include <QPainter>
 #include <QBrush>
-#include <QColor>
 #include <string>
+#include <QFile>
 #include "game.h"
 #include <QTimer>
 
@@ -17,9 +17,10 @@ class mainWindow : public QMainWindow
 {
     Q_OBJECT
     QPushButton *play_button;
-    Game *gameWindow;
+    BaseGame *gameWindow;
     QInputDialog *userInput;    
     QLabel  *scoreWindow, *dificuldade3, *dificuldade2, *dificuldade1, *corEscolhida;
+    QFile *scoreFile;
     int aux = 0, cor = 1;
 
 public:

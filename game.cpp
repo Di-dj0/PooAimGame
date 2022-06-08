@@ -2,12 +2,11 @@
 #include "game.h"
 #include <QMessageBox>
 
-Game::Game(int qnt, int difficult, int cor){     //Construtor que atribui a quantidade botões e seus tamanhos
+Game::Game(int qnt, int difficult, int cor){
     this->qnt = qnt;
     this->difficult = difficult;
     this->cor = cor;
 }
-
 
 double Game::score = 0;
 
@@ -90,8 +89,8 @@ void Game::nextButton(){
             throw -1;
     }
     catch(...) {
-        QMessageBox::critical(this, "erro",  "Voce demorou muito!");
+        this->setStyleSheet("background-color: gray");
+        QMessageBox::critical(this, "Erro",  "Voce demorou muito!");
         emit gameEnd();
     }
 }
-
