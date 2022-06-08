@@ -1,0 +1,14 @@
+Minigame de mira baseado em aim-trainers já existentes usados para 
+treino de mira com o mouse. O objetivo do usuário é destruir o máximo
+de blocos no menor tempo possível com a maior dificuldade possível.
+
+Quanto mais blocos, mais pontos são recompensados ao jogador.
+
+O jogo ainda possui uma explicação comparando as dificuldades, assim
+como a funcionalidade de personalização da cor do bloco durante o jogo
+(Usando o clique esquerdo para decrementar a cor e o direito para 
+incrementar).
+
+Ao final do jogo é salvo o score em um arquivo separado do game,
+possibilitando assim a visualização do último score em outras 
+inicializações do programa.
